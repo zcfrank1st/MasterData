@@ -2,7 +2,7 @@
  * Created by zcfrank1st on 7/14/15.
  */
 app.controller('mdsController', function ($scope, $filter, ngTableParams) {
-    var data = [{name: "Moroni", id: 50},
+    var data = [{name: "test", id: 1},
             {name: "Tiancum", id: 43},
             {name: "Jacob", id: 27},
             {name: "Nephi", id: 29},
@@ -37,4 +37,7 @@ app.controller('mdsController', function ($scope, $filter, ngTableParams) {
                 $defer.resolve($scope.datas);
             }
         });
+
+
+
 });
