@@ -62,37 +62,142 @@
                         <span style="color: green;">主数据</span>
                         <small>
                             <i class="icon-double-angle-right"></i>
-                            {{ name }} 详情
+                            表详情
                         </small>
 
                         <a class="btn btn-minier btn-info" href="/mds/" style="float: right">返回</a>
                     </h1>
                 </div>
+
                 <!-- /.page-header -->
                 <div class="row">
                     <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>表名: {{ name }}</h4>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="widget-box">
+                                            <div class="widget-header widget-header-flat">
+                                                <h4 class="text-success">描述</h4>
+                                            </div>
+                                            <div class="widget-body">
+                                                <div class="widget-main">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <span ng-show="description">{{ description }}</span>
+                                                            <span ng-show="!description"><textarea style='height:150px;width:400px;resize: none;' ng-model="descriptionInfo"></textarea></span>
+                                                            <button class="btn btn-minier btn-yellow"
+                                                                    ng-click="description=false" ng-show="description">
+                                                                <i class="icon-edit bigger-120"></i>
+                                                            </button>
+
+                                                            <button class="btn btn-minier btn-info"
+                                                                    ng-click="saveContent()" ng-show="!description">
+                                                                <i class="icon-check bigger-120"></i>
+                                                            </button>
+                                                            <button class="btn btn-minier btn-danger"
+                                                                    ng-click="description=true" ng-show="!description">
+                                                                <i class="icon-reply bigger-120"></i>
+                                                            </button>
+
+                                                            <span class="alert alert-block alert-danger" ng-show="descAlert">
+                                                                修改信息失败,请联系管理员
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="widget-box">
+                                            <div class="widget-header widget-header-flat">
+                                                <h4 class="text-success"><i class="icon-code"></i>建表语句</h4>
+                                            </div>
+                                            <div class="widget-body">
+                                                <div class="widget-main">
+                                                    <pre class="prettyprint linenums">
+{{ create_table }}
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="widget-box">
+                                            <div class="widget-header widget-header-flat">
+                                                <h4 class="text-success">字段说明</h4>
+                                            </div>
+
+                                            <div class="widget-body">
+                                                <div class="widget-main">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            hello world
+
+{#                                        字段说明 按表结构展示 解析json字符串 #}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-xs-12">
-                                {{ description }}
-
-
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="widget-box">
+                                            <div class="widget-header widget-header-flat">
+                                                <h4 class="text-success">血缘</h4>
+                                            </div>
+                                            <div class="widget-body">
+                                                <div class="widget-main">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            {{ blood }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 
-<script src="/assets/libs/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/assets/libs/ace/js/bootstrap.min.js"></script>
-<script src="/assets/libs/ace/js/ace-elements.min.js"></script>
-<script src="/assets/libs/ace/js/ace.min.js"></script>
+    <script src="/assets/libs/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/libs/ace/js/bootstrap.min.js"></script>
+    <script src="/assets/libs/ace/js/ace-elements.min.js"></script>
+    <script src="/assets/libs/ace/js/ace.min.js"></script>
 
-<script src="/assets/libs/bower_components/angular/angular.min.js"></script>
-<script src="/assets/libs/bower_components/angular-resource/angular-resource.min.js"></script>
-<script src="/assets/js/app1.js"></script>
-<script src="/assets/js/controller1.js"></script>
+    <script src="/assets/libs/bower_components/angular/angular.min.js"></script>
+    <script src="/assets/libs/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/assets/js/app1.js"></script>
+    <script src="/assets/js/controller1.js"></script>
 </html>
