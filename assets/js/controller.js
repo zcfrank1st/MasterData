@@ -1,25 +1,10 @@
 /**
  * Created by zcfrank1st on 7/14/15.
  */
-app.controller('mdsController', function ($scope, $filter, ngTableParams) {
-    var data = [{name: "test", id: 1},
-            {name: "Tiancum", id: 43},
-            {name: "Jacob", id: 27},
-            {name: "Nephi", id: 29},
-            {name: "Enos", id: 34},
-            {name: "Tiancum", id: 43},
-            {name: "Jacob", id: 27},
-            {name: "Nephi", id: 29},
-            {name: "Enos", id: 34},
-            {name: "Tiancum", id: 43},
-            {name: "Jacob", id: 27},
-            {name: "Nephi", id: 29},
-            {name: "Enos", id: 34},
-            {name: "Tiancum", id: 43},
-            {name: "Jacob", id: 27},
-            {name: "Nephi", id: 29},
-            {name: "Enos", id: 34}];  // json array
-
+app.controller('mdsController', function ($scope, $filter, ngTableParams, $resource) {
+    var Tables = $resource('/mds/query/tables/');
+    Tables.query({}, function (d) {
+        var data = d;
         $scope.tableParams = new ngTableParams({
             page: 1,            // show first page
             count: 10          // count per page
@@ -37,7 +22,5 @@ app.controller('mdsController', function ($scope, $filter, ngTableParams) {
                 $defer.resolve($scope.datas);
             }
         });
-
-
-
+    });
 });
