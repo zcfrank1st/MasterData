@@ -89,9 +89,9 @@
                                                 <div class="widget-main">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <span ng-show="description">{{ description }}</span>
+                                                            <h4 ng-show="description" style="display: inline-block">{{ description }}</h4>
                                                             <span ng-show="!description"><textarea style='height:150px;width:400px;resize: none;' ng-model="descriptionInfo"></textarea></span>
-                                                            <button class="btn btn-minier btn-yellow"
+                                                            <button class="btn btn-minier btn-purple"
                                                                     ng-click="description=false" ng-show="description">
                                                                 <i class="icon-edit bigger-120"></i>
                                                             </button>
@@ -141,7 +141,25 @@
                                     <div class="col-sm-6">
                                         <div class="widget-box">
                                             <div class="widget-header widget-header-flat">
-                                                <h4 class="text-success">字段说明</h4>
+                                                <h4 class="text-success">
+                                                    字段说明
+                                                    <button class="btn btn-minier btn-purple" ng-click="columnDescription=false;" ng-show="columnDescription">
+                                                        <i class="icon-edit bigger-120"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-minier btn-info"
+                                                            ng-click="saveColumnInfo()" ng-show="!columnDescription">
+                                                        <i class="icon-check bigger-120"></i>
+                                                    </button>
+                                                    <button class="btn btn-minier btn-danger"
+                                                            ng-click="columnDescription=true" ng-show="!columnDescription">
+                                                        <i class="icon-reply bigger-120"></i>
+                                                    </button>
+
+                                                    <span class="alert alert-block alert-danger" ng-show="columnDescAlert">
+                                                                修改信息失败,请联系管理员
+                                                    </span>
+                                                </h4>
                                             </div>
 
                                             <div class="widget-body">
@@ -165,7 +183,7 @@
                                                                 {% for line in columns %}
                                                                 <tr>
                                                                     <td>{{ line.column }}</td>
-                                                                    <td>{{ line.info }}</td>
+                                                                    <td><span ng-show="columnDescription">{{ line.info }}</span> <input type="text" ng-show="!columnDescription" id="row{{ forloop.counter }}"></td>
                                                                 </tr>
                                                                 {% endfor %}
                                                                 </tbody>
@@ -192,7 +210,7 @@
                                                 <div class="widget-main">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            {{ blood }}
+                                                            <h4>{{ blood }}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
