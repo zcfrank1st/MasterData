@@ -16,12 +16,11 @@ app1.controller('mdsController1', function ($scope, $location, $resource) {
                 location.href=$location.absUrl();
             } else if(r.info === "no") {
                 $scope.descAlert = true;
-
             } else {
                 $scope.descAlert = true;
             }
         });
     };
 
-    
+
 });

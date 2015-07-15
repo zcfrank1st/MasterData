@@ -146,13 +146,32 @@
 
                                             <div class="widget-body">
                                                 <div class="widget-main">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            hello world
+{#          #}
+                                                            <table class="table table-bordered table-striped">
+                                                                <thead class="thin-border-bottom">
+                                                                <tr>
+                                                                    <th>
+                                                                        <i class="icon-caret-right green"></i>
+                                                                        列名称
+                                                                    </th>
+                                                                    <th>
+                                                                        <i class="icon-caret-right green"></i>
+                                                                        说明
+                                                                    </th>
+                                                                </tr>
+                                                                </thead>
 
-{#                                        字段说明 按表结构展示 解析json字符串 #}
-                                                        </div>
-                                                    </div>
+                                                                <tbody>
+                                                                {% for line in columns %}
+                                                                <tr>
+                                                                    <td>{{ line.column }}</td>
+                                                                    <td>{{ line.info }}</td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+
+{# 字段说明 按表结构展示 解析json字符串 #}
                                                 </div>
                                             </div>
                                         </div>

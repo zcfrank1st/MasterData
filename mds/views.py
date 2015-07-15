@@ -24,6 +24,7 @@ def change_table_description(request):
 
 
 # POST
+# TODO 修改表字段的描述信息
 def change_table_column_description(request):
     pass
 
@@ -37,8 +38,8 @@ def get_all_tables(request):
         results.append(ele)
     return HttpResponse(json.dumps(results))
 
-# GET
+# GET  eval转换
 def get_peculiar_table_info(request, id):
     result = ItemTable.objects.get(table_id=id)
-    values = {"name": result.table_name, "description": result.description, "create_table": result.create_table_info, "blood": result.blood_relation}
+    values = {"name": result.table_name, "description": result.description, "create_table": result.create_table_info, "blood": result.blood_relation, "columns": eval(result.column_description)}
     return render(request, 'detail.html', values)
