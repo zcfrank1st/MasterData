@@ -79,10 +79,15 @@ def set_meta_info(request):  # POST && API
 
 
 def set_part_meta_info(request):  # POST && API
+    # 更新数据格式json
+    # {
+    #       "table_name": "xxx",
+    #       "blood_relation": "xxx"
+    # }
     if request.method == 'POST':
         req = json.loads(request.body)
         try:
-            # TODO 根据信息更新元数据表
+            ItemTable.objects.filter(table_name=req['table_name']).update(blood_relation=req['blood_relation'])
             return HttpResponse(json.dumps({'info': 'yes'}))
         except Exception, e:
             print e
