@@ -5,13 +5,13 @@ import simplejson as json
 from models import ItemTable
 
 # Create your views here.
-# index 页面
-def index(request):
+
+
+def index(request):  # GET
     return render(request, 'index.html')
 
-# restful 方法
-# POST
-def change_table_description(request):
+
+def change_table_description(request):  # POST
     if request.method == 'POST':
         req = json.loads(request.body)
         try:
@@ -23,8 +23,7 @@ def change_table_description(request):
         return HttpResponse(json.dumps({"info": "no"}))
 
 
-# POST
-def change_table_column_description(request):
+def change_table_column_description(request):  # POST
     if request.method == 'POST':
         req = json.loads(request.body)
         new_column_description = []
@@ -43,13 +42,14 @@ def change_table_column_description(request):
         return HttpResponse(json.dumps({"info": "no"}))
     pass
 
-def get_column_number(request, id):
+
+def get_column_number(request, id):  # GET
     result = ItemTable.objects.get(table_id=id)
     array = eval(result.column_description)
     return HttpResponse(json.dumps({"number": str(len(array))}))
 
-# GET
-def get_all_tables(request):
+
+def get_all_tables(request):  # GET
     alls = ItemTable.objects.all()
     results = []
     for obj in alls:
@@ -57,8 +57,24 @@ def get_all_tables(request):
         results.append(ele)
     return HttpResponse(json.dumps(results))
 
-# GET  eval转换
-def get_peculiar_table_info(request, id):
+
+def get_peculiar_table_info(request, id):  # GET
     result = ItemTable.objects.get(table_id=id)
     values = {"name": result.table_name, "description": result.description, "create_table": result.create_table_info, "blood": result.blood_relation, "columns": eval(result.column_description)}
     return render(request, 'detail.html', values)
+
+
+def set_meta_info(request):  # POST && API
+    if request.method == 'POST':
+        req = json.loads(request.body)
+        try:
+            instance = ItemTable(table_name=req['table_name'], description=req['description'], create_table_info=req['create_table_info'], column_description=req['column_description'], blood_relation=req['blood_relation'])
+            instance.save()
+            return HttpResponse(json.dumps({'info': 'yes'}))
+        except Exception, e:
+            print e
+            return HttpResponse(json.dumps({'info': 'no'}))
+    else:
+        return HttpResponse(json.dumps({'info': 'no'}))
+
+
