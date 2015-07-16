@@ -78,3 +78,14 @@ def set_meta_info(request):  # POST && API
         return HttpResponse(json.dumps({'info': 'no'}))
 
 
+def set_part_meta_info(request):  # POST && API
+    if request.method == 'POST':
+        req = json.loads(request.body)
+        try:
+            # TODO 根据信息更新元数据表
+            return HttpResponse(json.dumps({'info': 'yes'}))
+        except Exception, e:
+            print e
+            return HttpResponse(json.dumps({'info': 'no'}))
+    else:
+        return HttpResponse(json.dumps({'info': 'no'}))

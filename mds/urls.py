@@ -10,6 +10,9 @@ urlpatterns=[
     url(r'^query/tables/$', views.get_all_tables),
     url(r'^query/table/(?P<id>\d+)/$', views.get_peculiar_table_info),
 
-    # api
+    # api -> all meta info
     url(r'^setmata/$', views.set_meta_info),
+
+    # api -> blood meta info
+    url(r'^setpartmeta/$', views.set_part_meta_info)
 ]
