@@ -68,7 +68,7 @@ def set_meta_info(request):  # POST && API
     if request.method == 'POST':
         req = json.loads(request.body)
         try:
-            instance = ItemTable(table_name=req['table_name'], description=req['description'], create_table_info=req['create_table_info'], column_description=req['column_description'], blood_relation=req['blood_relation'])
+            instance = ItemTable(table_name=req['table_name'], table_type=req['table_type'], description=req['description'], create_table_info=req['create_table_info'], column_description=req['column_description'], blood_relation=req['blood_relation'])
             instance.save()
             return HttpResponse(json.dumps({'info': 'yes'}))
         except Exception, e:
